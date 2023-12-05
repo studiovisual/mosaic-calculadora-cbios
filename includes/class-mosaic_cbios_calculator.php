@@ -75,7 +75,9 @@ class Mosaic_cbios_calculator {
 		$this->plugin_name = 'mosaic_cbios_calculator';
 
         add_action( 'admin_menu', [ $this, 'mosaic_cbios_calculator_add_menu' ]);
+		require_once(plugin_dir_path( __FILE__ ) . 'class-mosaic_cbios_calculator-settings.php');
 
+		$mscbios_calculator_settings = new Mosaic_cbios_calculator_settings();
 	}
 
     public function mosaic_cbios_calculator_add_menu()
@@ -92,18 +94,11 @@ class Mosaic_cbios_calculator {
             'dashicons-calculator'
         );
 
-        add_submenu_page(
-            'mosaic_cbios_calculator_admin',
-            'Ajuste de Valores',
-            'Ajuste de Valores',
-            'manage_options',
-            'mosaic_cbios_calculator_admin_settings'
-        )
     }
 
     public function mosaic_cbios_calculator_settings_page()
     {
-        echo 'teste página de admin';
+        require_once(plugin_dir_path( __FILE__ ) . '../admin/mosaic_cbios_calculator_settings.php');
     }
 
 	/**
